@@ -56,6 +56,7 @@ namespace Zadatak_1
             {
                 list3[i].Start();
                 list3[i].Join();
+                Thread.Sleep(100);
             }
         }
         static void StartA4(List<Thread> list4)
@@ -64,6 +65,7 @@ namespace Zadatak_1
             {
                 list4[i].Start();
                 list4[i].Join();
+                Thread.Sleep(100);
             }
         }
     }

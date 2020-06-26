@@ -46,8 +46,8 @@ namespace Zadatak_1
                 Document document = new Document(color, orientation, format);
                 Console.Write(t.Name);
                 document.PrintRequest(document);
-                Thread.Sleep(3000);
-                Console.Write(t.Name);
+                Thread.Sleep(1000);
+                Console.Write("\t{0}",t.Name);
                 document.PrintNotification(document);
             }
 
@@ -67,8 +67,8 @@ namespace Zadatak_1
                 Document document = new Document(color, orientation, format);
                 Console.Write(t.Name);
                 document.PrintRequest(document);
-                Thread.Sleep(3000);
-                Console.Write(t.Name);
+                Thread.Sleep(1000);
+                Console.Write("\t{0}",t.Name);
                 document.PrintNotification(document);
             }
         }
@@ -84,12 +84,12 @@ namespace Zadatak_1
         }
         public void PrintRequest(Document doc)
         {
-            //Console.WriteLine(" has sent request to print document in {0} format. Color:{1}. Orientation:{2}",doc.format,doc.color,doc.orientation);
-            Console.WriteLine(" {0} format Started",doc.format);
+            Console.WriteLine(" has sent request to print document in {0} format. Color:{1}. Orientation:{2}",doc.format,doc.color,doc.orientation);
+         
         }
         public void PrintNotification(Document doc)
         {
-            Console.WriteLine(" {0} format finished.\n",doc.format);
+            Console.WriteLine(" user can take {0} format document. Printing is finished.",doc.format);
         }
 
     }
