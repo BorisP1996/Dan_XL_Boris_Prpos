@@ -9,27 +9,62 @@ namespace Zadatak_1
 {
     class Program
     {
-        static List<Thread> threadList = new List<Thread>();
+        static List<Thread> threadList3 = new List<Thread>();
+        static List<Thread> threadList4 = new List<Thread>();
+        static Random rnd = new Random();
+
         static void Main(string[] args)
         {
-            Document doc = new Document();
+            Document doc = new Document();         
 
             for (int i = 0; i < 10; i++)
             {
-                string temp = (i + 1).ToString();
-                Thread t = new Thread(() => doc.CreateDocument(Thread.CurrentThread))
+                int decideMethod = rnd.Next(3, 5);
+                if (decideMethod == 3)
                 {
-                    Name=string.Format("Computer {0}",temp)
-                };
-                threadList.Add(t);
+                    string temp = (i + 1).ToString();
+                    Thread t = new Thread(() => doc.CreateDocumentA3(Thread.CurrentThread))
+                    {
+                        Name = string.Format("Computer {0}", temp)
+                    };
+                    threadList3.Add(t);
+                }
+                if (decideMethod == 4)
+                {
+                    string temp = (i + 1).ToString();
+                    Thread t = new Thread(() => doc.CreateDocumentA4(Thread.CurrentThread))
+                    {
+                        Name = string.Format("Computer {0}", temp)
+                    };
+                    threadList4.Add(t);
+                }
             }
-            for (int i = 0; i < threadList.Count; i++)
-            {
-                threadList[i].Start();
-                Thread.Sleep(100);
-                threadList[i].Join();
-            }
+
+            Thread StartA3Thread = new Thread(() => StartA3(threadList3));
+            Thread StartA4Thread = new Thread(() => StartA4(threadList4));
+
+            StartA3Thread.Start();
+            Thread.Sleep(10);
+            StartA4Thread.Start();
+           
+           
             Console.ReadLine();
+        }
+        static void StartA3(List<Thread> list3)
+        {
+            for (int i = 0; i < list3.Count; i++)
+            {
+                list3[i].Start();
+                list3[i].Join();
+            }
+        }
+        static void StartA4(List<Thread> list4)
+        {
+            for (int i = 0; i < list4.Count; i++)
+            {
+                list4[i].Start();
+                list4[i].Join();
+            }
         }
     }
 }
